@@ -1,51 +1,73 @@
 # VTU24373_02H_Assessment
 
+# Full Stack Task Management Application
 
-# Project Name
+A simple Task Management Portal built using:
 
-Full Stack Task Management Application
+- React.js
+- Node.js
+- Express.js
+- MongoDB
+- Mongoose
+- Axios
 
-## Project Structure
+The application allows users to:
+
+- View all tasks
+- Create new tasks
+- Update task status
+- Delete tasks
+- Filter tasks by status
+
+---
+
+# Project Structure
 
 ```plaintext
-project-root/
+VTU24373_02H_Assessment/
 │
-├── frontend/
-│   ├── src/
-│   │   ├── components/
-│   │   │   ├── TaskCard.jsx
-│   │   │   ├── TaskForm.jsx
-│   │   │   └── Navbar.jsx
-│   │   │
-│   │   ├── pages/
-│   │   │   ├── Dashboard.jsx
-│   │   │   └── AddTask.jsx
-│   │   │
-│   │   ├── services/
-│   │   │   └── taskService.js
-│   │   │
-│   │   ├── App.jsx
-│   │   ├── main.jsx
-│   │   └── App.css
+├── Backend/
+│   ├── config/
+│   │   └── db.js
 │   │
-│   └── package.json
+│   ├── controllers/
+│   │   └── taskController.js
+│   │
+│   ├── models/
+│   │   └── Task.js
+│   │
+│   ├── routes/
+│   │   └── taskRoutes.js
+│   │
+│   ├── server.js
+│   ├── package.json
+│   └── .env
 │
-└── backend/
-    ├── config/
-    │   └── db.js
-    │
-    ├── models/
-    │   │── Task.js
-    │
-    ├── controllers/
-    │   └── taskController.js
-    │
-    ├── routes/
-    │   └── taskRoutes.js
-    │
-    ├── server.js
-    └── package.json
+├── output/
+│   ├── post.png
+│   ├── get1.png
+│   ├── update.png
+│   └── delete.png
+│
+└── README.md
 ```
+
+---
+
+# Technologies Used
+
+## Backend
+
+- Node.js
+- Express.js
+- MongoDB
+- Mongoose
+- CORS
+- Dotenv
+
+## API Testing
+
+- Postman
 
 ---
 
@@ -55,70 +77,42 @@ project-root/
 
 ```bash
 git clone <repository-url>
-```
-
-Move into project directory:
-
-```bash
-cd project-root
+cd VTU24373_02H_Assessment
 ```
 
 ---
 
-# Install Dependencies
+# Backend Setup
 
-## Frontend
-
-Move to frontend:
+Move to Backend directory:
 
 ```bash
-cd frontend
+cd Backend
 ```
 
-Install packages:
+Install dependencies:
 
 ```bash
 npm install
 ```
 
-Start frontend server:
+Create a `.env` file:
 
-```bash
-npm run dev
+```env
+PORT=5000
+MONGO_URI=your_mongodb_connection_string
 ```
 
-OR (if configured)
+Example:
 
-```bash
-npm start
-```
-
-Frontend will run on:
-
-```plaintext
-http://localhost:5173
+```env
+PORT=5000
+MONGO_URI=mongodb+srv://username:password@cluster.mongodb.net/taskdb
 ```
 
 ---
 
-## Backend
-
-Open another terminal.
-
-Move to backend:
-
-```bash
-cd project-root
-cd backend
-```
-
-Install packages:
-
-```bash
-npm install
-```
-
-Start backend server:
+# Run Backend Server
 
 Using Node:
 
@@ -126,13 +120,13 @@ Using Node:
 node server.js
 ```
 
-OR using Nodemon:
+Using Nodemon:
 
 ```bash
 nodemon server.js
 ```
 
-Backend will run on:
+Backend runs on:
 
 ```plaintext
 http://localhost:5000
@@ -140,63 +134,221 @@ http://localhost:5000
 
 ---
 
-# Environment Variables (Optional)
+# Database Schema
 
-Create `.env` inside backend:
+## Task Collection
 
-```env
-PORT=5000
-MONGO_URI=your_database_connection
+| Field       | Type     |
+| ----------- | -------- |
+| _id         | ObjectId |
+| title       | String   |
+| description | String   |
+| status      | String   |
+| createdAt   | Date     |
+| updatedAt   | Date     |
+
+### Allowed Status Values
+
+```plaintext
+Pending
+In Progress
+Completed
 ```
 
 ---
 
-# API Testing
+# API Documentation
 
-Use:
+## 1. Get All Tasks
 
-* Postman
-* Thunder Client
-* Browser
+### Endpoint
 
-Example:
-
-```plaintext
-GET http://localhost:5000/api/tasks
+```http
+GET /tasks
 ```
+
+### Response
+
+```json
+[
+  {
+    "_id": "123",
+    "title": "Build Login Page",
+    "description": "Create a responsive login page",
+    "status": "Pending",
+    "createdAt": "2026-06-20T10:00:00.000Z",
+    "updatedAt": "2026-06-20T10:00:00.000Z"
+  }
+]
+```
+
+---
+
+## 2. Create Task
+
+### Endpoint
+
+```http
+POST /tasks
+```
+
+### Request Body
+
+```json
+{
+  "title": "Build Login Page",
+  "description": "Create a responsive login page for users",
+  "status": "Pending"
+}
+```
+
+### Response
+
+```json
+{
+  "_id": "123",
+  "title": "Build Login Page",
+  "description": "Create a responsive login page for users",
+  "status": "Pending"
+}
+```
+
+---
+
+## 3. Update Task Status
+
+### Endpoint
+
+```http
+PUT /tasks/:id
+```
+
+### Request Body
+
+```json
+{
+  "status": "Completed"
+}
+```
+
+### Response
+
+```json
+{
+  "_id": "123",
+  "title": "Build Login Page",
+  "description": "Create a responsive login page for users",
+  "status": "Completed"
+}
+```
+
+---
+
+## 4. Delete Task
+
+### Endpoint
+
+```http
+DELETE /tasks/:id
+```
+
+### Response
+
+```json
+{
+  "message": "Task deleted successfully"
+}
+```
+
+---
+
+# API Testing Screenshots
+
+## Create Task (POST /tasks)
+
+Successfully created a new task.
+
+![Create Task](./output/post.png)
+
+---
+
+## Get All Tasks (GET /tasks)
+
+Retrieved all tasks from the database.
+
+![Get Tasks](./output/get1.png)
+
+---
+
+## Update Task Status (PUT /tasks/:id)
+
+Updated task status successfully.
+
+![Update Task](./output/update.png)
+
+---
+
+## Delete Task (DELETE /tasks/:id)
+
+Deleted task successfully.
+
+![Delete Task](./output/delete.png)
 
 ---
 
 # Assumptions
 
-* Node.js is installed.
-* npm is installed.
-* MongoDB database is running.
-* Frontend and backend run in separate terminals.
-* Backend API port is `5000`.
-* Frontend default Vite port is `5173`.
-* API base URL is configured in `taskService.js`.
+- Single-user application.
+- Authentication is not required.
+- MongoDB is used as the database.
+- Backend runs on port 5000.
+- API base URL is:
+
+```plaintext
+http://localhost:5000/tasks
+```
+
+- Task status can only be:
+
+```plaintext
+Pending
+In Progress
+Completed
+```
 
 ---
 
-# Useful Commands
+# Error Handling
+
+The API handles:
+
+- Missing title
+- Missing description
+- Invalid task ID
+- Task not found
+- Database errors
+
+Example:
+
+```json
+{
+  "message": "Task not found"
+}
+```
+
+---
+
+# Git Commit Examples
 
 ```bash
-# Install dependencies
-npm install
-
-# Start frontend
-cd frontend
-npm run dev
-
-# Start backend
-cd backend
-nodemon server.js
+git commit -m "Initial project setup"
+git commit -m "Added API documentation and screenshots"
 ```
 
 ---
 
 # Author
 
-Raunak Kumar
-Software Engineering Student
+**Raunak Kumar**
+
+Full Stack Application Developer Assessment Submission
