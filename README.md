@@ -268,7 +268,7 @@ DELETE /tasks/:id
 
 Successfully created a new task.
 
-![Create Task](./output/post.png)
+![Create Task](./Backend/output/post.png)
 
 ---
 
@@ -276,7 +276,7 @@ Successfully created a new task.
 
 Retrieved all tasks from the database.
 
-![Get Tasks](./output/get1.png)
+![Get Tasks](./Backend/output/get1.png)
 
 ---
 
@@ -284,7 +284,7 @@ Retrieved all tasks from the database.
 
 Updated task status successfully.
 
-![Update Task](./output/update.png)
+![Update Task](.Backend/output/update.png)
 
 ---
 
@@ -292,7 +292,7 @@ Updated task status successfully.
 
 Deleted task successfully.
 
-![Delete Task](./output/delete.png)
+![Delete Task](.Backend/output/delete.png)
 
 ---
 
