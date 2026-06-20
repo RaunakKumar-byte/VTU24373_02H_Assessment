@@ -296,6 +296,8 @@ Deleted task successfully.
 
 ---
 
+
+![frontend](./frontend/src/output/main-output.png)
 # Assumptions
 
 - Single-user application.
