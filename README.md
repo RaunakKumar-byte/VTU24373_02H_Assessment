@@ -296,7 +296,9 @@ Deleted task successfully.
 
 ---
 
-![Frontend Output](./frontend/src/output/main-output.png)
+## Frontend Output
+
+![Frontend Output](./Frontend/src/output/main-output.png)
 # Assumptions
 
 - Single-user application.
