@@ -284,7 +284,7 @@ Retrieved all tasks from the database.
 
 Updated task status successfully.
 
-![Update Task](.Backend/output/update.png)
+![Update Task](./Backend/output/update.png)
 
 ---
 
@@ -292,7 +292,7 @@ Updated task status successfully.
 
 Deleted task successfully.
 
-![Delete Task](.Backend/output/delete.png)
+![Delete Task](./Backend/output/delete.png)
 
 ---
 
