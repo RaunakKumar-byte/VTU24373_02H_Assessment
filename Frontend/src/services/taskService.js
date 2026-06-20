@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/tasks';
+const API_URL = 'https://vtu-24373-02-h-assessment-i5n85u1vi.vercel.app/tasks';
 
 export const getTasks = () => axios.get(API_URL);
 
